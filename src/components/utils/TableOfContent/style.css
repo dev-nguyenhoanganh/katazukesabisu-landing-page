@@ -1,0 +1,79 @@
+.toc-container {
+  display: none;
+  width: 220px;
+  min-width: 220px;
+  align-self: flex-start;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  padding: 0 16px;
+}
+
+.toc-container nav {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.toc-container li a {
+  display: block;
+  position: relative;
+  color: #383a42;
+  padding: 4px 4px 4px 8px;
+  text-decoration: unset;
+}
+
+.toc-container li a:hover {
+  color: #06c;
+  background-color: #0066cc33;
+}
+
+.toc-container li a.level2 {
+  padding-left: 12px;
+  padding: 4px 4px 4px 24px;
+}
+
+.toc-container li a.active {
+  color: #06c;
+  background-color: #0066cc33;
+}
+
+.toc-container li a.active::after {
+  position: absolute;
+  content: '';
+  width: 0.25em;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #06c;
+}
+
+.toc-container nav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.toc-container nav::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.toc-container nav::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 4px;
+}
+
+.toc-container > p {
+  padding: 16px 0 8px;
+  font-weight: bold;
+  font-size: 120%;
+  letter-spacing: normal;
+}
+
+@media (min-width: 1520px) {
+  .toc-container {
+    display: block;
+  }
+
+  .main-container {
+    margin: 0 0 0 236px;
+  }
+}

@@ -1,0 +1,17 @@
+.required {
+  display: block;
+  position: relative;
+}
+
+.required::after {
+  content: "必須";
+  position: absolute;
+  top: 0;
+  right: 8px;
+  background-color: red;
+  color: #fff;
+  width: 32px;
+  font-size: 12px;
+  height: 16px;
+  border-radius: 4px;
+}

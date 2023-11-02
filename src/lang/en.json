@@ -1,0 +1,6 @@
+{
+  "notice.apiFetch.noData": "The current query has no posts. Please make sure you have published items matching your query.",
+  "error.reloadPage": "We're sorry, an error has occurred. Please reload this page and try again.",
+  "notice.submitForm.successful": "Please wait while we are processing your request...",
+  "validate.required": "Please fill out this field."
+}

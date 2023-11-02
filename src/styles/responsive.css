@@ -1,0 +1,107 @@
+/* --------------------- Desktop ---------------------------------*/
+
+@media only screen and (max-width: 1024px) {
+  #mainContents {
+    padding: 20px 0;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+  }
+
+  #title .title-image-phone {
+    background-size: 100%;
+  }
+}
+
+/* --------------------- Tablet ---------------------------------*/
+
+@media only screen and (min-width: 817px) and (max-width: 1700px) {
+  #title .title-image-link::after {
+    background-size: 70%;
+  }
+}
+
+@media only screen and (max-width: 817px) {
+  #topMenu .topMenu li {
+    width: 33.33%;
+    box-sizing: border-box;
+    height: 52px;
+    padding: 0;
+    position: relative;
+    border-right: solid 1px #06b;
+    border-left: solid 1px #5ba6e3;
+    border-bottom: solid 1px #5ba6e3;
+  }
+
+  #title .title-image-link::after {
+    width: 100%;
+    left: 20px;
+  }
+
+  #title .title-image-phone {
+    background-size: 100%;
+  }
+}
+
+@media only screen and (min-width: 512px) and (max-width: 817px) {
+  #title .title-image-link::after {
+    background-size: 100%;
+  }
+}
+
+/* --------------------- Mobile ---------------------------------*/
+
+@media only screen and (max-width: 512px) {
+  #topMenu .topMenu li {
+    width: 100%;
+    box-sizing: border-box;
+    height: 52px;
+    padding: 0;
+    position: relative;
+    border-right: solid 1px #06b;
+    border-left: solid 1px #5ba6e3;
+    border-bottom: solid 1px #5ba6e3;
+  }
+
+  #title {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  #title .title-image-link,
+  #title .title-image-phone {
+    grid-column: 1 / span 2;
+  }
+
+  #title .title-image-link::after {
+    top: 0;
+    left: 0;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 512px) {
+  #title .title-image-phone,
+  #title .title-image-link::after {
+    background-position: center;
+    background-size: 95%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  #title {
+    margin: 0;
+  }
+
+  #title .title-image-phone,
+  #title .title-image-link::after {
+    background-position: center;
+    background-size: 95%;
+  }
+
+  #title .title-image-phone {
+    height: 60px;
+  }
+
+  #title .title-image-link {
+    height: 100%;
+  }
+}

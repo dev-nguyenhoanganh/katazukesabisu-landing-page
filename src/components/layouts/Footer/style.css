@@ -1,0 +1,137 @@
+footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-list {
+  background-image: url(../../../images/bg.jpg);
+}
+
+.contact-list.full-width {
+  background-image: unset;
+}
+
+.contact-list.full-width .table {
+  width: 100%;
+  margin: unset;
+}
+
+.contact-list .img {
+  margin: 24px auto 8px;
+  height: 48px;
+  max-width: 400px;
+  background-image: url(../../../images/banner1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.contact-list .table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.contact-list .table > .flex {
+  flex-wrap: nowrap;
+  align-items: start;
+  justify-content: center;
+  padding: 8px 16px 0;
+}
+
+.contact-list .label {
+  width: 30%;
+  text-align: center;
+  border-bottom: 2px solid #55a7d9;
+  line-height: 150%;
+  padding: 0 16px 8px;
+  align-self: stretch;
+  font-weight: bold;
+}
+
+.contact-list .value {
+  width: 70%;
+  padding: 0 16px 8px;
+  border-bottom: 1px solid #999;
+  line-height: 150%;
+  align-self: stretch;
+}
+
+footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border-bottom: 1px solid rgb(229 231 235);
+  padding: 16px;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+footer ul li {
+  width: 50%;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .contact-list .img {
+    height: 60px;
+  }
+
+  .contact-list .table {
+    width: 60%;
+    max-width: 800px;
+  }
+
+  .contact-list.full-width .table {
+    max-width: unset;
+    width: 100%;
+  }
+
+  .contact-list .label {
+    width: 40%;
+  }
+
+  .contact-list .value {
+    width: 60%;
+  }
+
+  footer ul {
+    width: 1024px;
+    padding: 16px 0;
+  }
+
+  footer ul li {
+    width: unset;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 640px) {
+  .contact-list .img {
+    height: 60px;
+  }
+
+  .contact-list .table {
+    width: 80%;
+  }
+
+  footer ul li {
+    width: 33.33%;
+    text-align: center;
+  }
+
+  .contact-list .label {
+    width: 40%;
+  }
+
+  .contact-list .value {
+    width: 60%;
+  }
+}

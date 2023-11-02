@@ -1,0 +1,166 @@
+.flow-summary {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flow-summary li a {
+  width: 100%;
+  display: block;
+  background: #fd2;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  border-bottom: solid 2px #e3b913;
+  box-sizing: border-box;
+  color: #860;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.flow-summary li a:hover {
+  opacity: 0.7;
+}
+
+.flow-summary li a:before {
+  content: '▼';
+  display: inline-block;
+  padding-right: 6px;
+  color: #e3b913;
+  transform: scaleY(0.5);
+}
+
+.flow-collection > .item {
+  background: #c2ebff;
+  border-radius: 10px;
+  display: block;
+  height: auto;
+  margin-bottom: 50px;
+  padding: 20px 40px;
+  position: relative;
+}
+
+.flow-collection h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: #008fdd;
+  border-radius: 24px;
+  padding: 6px 0 4px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.flow-collection .button-container {
+  width: 100%;
+  max-width: 616px;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.flow-collection > .item::after {
+  color: #c2ebff;
+  content: '▼';
+  font-size: 70px;
+  line-height: 0;
+  position: absolute;
+  text-align: center;
+  bottom: -0.1em;
+  transform: scaleY(0.4);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.flow-collection > .item:last-of-type::after {
+  content: unset;
+}
+
+.list-qa {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.list-qa > div {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+  gap: 8px;
+}
+
+.list-qa > div:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.list-qa .answer,
+.list-qa .question {
+  position: relative;
+  margin-left: 60px;
+  min-height: 40px;
+  padding-top: 6px;
+}
+
+.list-qa .question {
+  color: #08c;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+.list-qa .answer::before,
+.list-qa .question::before {
+  position: absolute;
+  border-radius: 20px;
+  color: #fff;
+  display: inline-block;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  width: 40px;
+  font-weight: normal;
+  top: 0;
+  left: -60px;
+}
+
+.list-qa .question::before {
+  background-color: #08c;
+  content: 'Q';
+}
+
+.list-qa .answer::before {
+  content: 'A';
+  background-color: #c00;
+}
+
+.list-qa .button-container {
+  margin-left: 60px;
+  display: flex;
+  flex-grow: 1;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .flow-summary {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .flow-collection .button-container {
+    width: 100%;
+    gap: 0;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .flow-collection > .item {
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .flow-collection > .item::after {
+    font-size: 40px;
+  }
+}
