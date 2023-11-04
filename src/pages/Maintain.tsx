@@ -20,7 +20,7 @@ export default function MaintainPage() {
               後でもう一度確認してください。
             </p>
           </div>
-          <StyledPrimaryBtn className="--red w-[100%] sm:w-[300px]" to="/" onClick={() => setHeaderIsOpen(false)}>
+          <StyledPrimaryBtn className="--red w-[100%] sm:w-[300px]" href="/" onClick={() => setHeaderIsOpen(false)}>
             トップページへ戻る
           </StyledPrimaryBtn>
         </div>

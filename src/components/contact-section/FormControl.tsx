@@ -222,7 +222,7 @@ const FormControl = (props: Record<string, InputControlProps>): JSX.Element => {
         </StyledLoading>
       )}
       <form onSubmit={handleSubmit}>
-        <StyledHeading className="--with-background">
+        <StyledHeading className="--with-background" id="contactForm">
           <span>お問い合わせフォーム</span>
         </StyledHeading>
         {renderFormData()}

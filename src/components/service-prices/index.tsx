@@ -104,8 +104,8 @@ const ServicePrice = ({ heading, style, section, id, button }: ServicePriceProps
 
   return (
     <>
-      <StyledHeading style={style} id={id} className="lg:!text-[230%]">
-        {heading}
+      <StyledHeading style={style} id={id} className="--with-background">
+        <span>{heading}</span>
       </StyledHeading>
 
       {section.map((item, index) => (
@@ -123,7 +123,7 @@ const ServicePrice = ({ heading, style, section, id, button }: ServicePriceProps
       {button &&
         button.map((btn, index) => (
           <React.Fragment key={index}>
-            <StyledPrimaryBtn className="--red w-[100%] md:w-[300px] mx-auto !mt-[16px]" to={btn.location}>
+            <StyledPrimaryBtn className="--red w-[100%] md:w-[300px] mx-auto !mt-[16px]" href={btn.location}>
               {btn.innerText}
             </StyledPrimaryBtn>
           </React.Fragment>

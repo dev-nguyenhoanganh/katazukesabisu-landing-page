@@ -1,11 +1,11 @@
 import React from 'react';
-import { fDateTime } from '../../utils/formatTime';
 import { Content } from '../../_mock/contactPage';
 import './style.css';
 import { StyledHeading } from '../../styles/Common';
 import { styled } from '@mui/material/styles';
 
 interface ContactInfoProps {
+  id?: string;
   title: string;
   list: {
     style: 'unordered' | 'ordered';
@@ -60,7 +60,7 @@ const StyledContainer = styled('div')(({ theme }) => ({
   // sm
 }));
 
-const ContactInfo = ({ createDate, block, title }: ContactInfoProps) => {
+const ContactInfo = ({ block, title, id }: ContactInfoProps) => {
   if (!title) {
     return null;
   }
@@ -87,12 +87,10 @@ const ContactInfo = ({ createDate, block, title }: ContactInfoProps) => {
 
   return (
     <React.Fragment>
-      <StyledHeading className="lg:!text-[230%]">{title}</StyledHeading>
+      <StyledHeading className="--with-background" id={id}>
+        <span>{title}</span>
+      </StyledHeading>
       <StyledContainer>{renderBlockItems()}</StyledContainer>
-
-      <p className="text-right mt-[16px] lg:mt-[40px]">
-        {createDate ? fDateTime(new Date(createDate), 'yyyy年MM月dd日 HH:mm') : ''}
-      </p>
     </React.Fragment>
   );
 };

@@ -31,6 +31,7 @@ export const seoHelmet = [
 
 const about: PostCommonProps = {
   title: '事業所情報',
+  id: 'office-information',
   createDate: '',
   content: [
     {

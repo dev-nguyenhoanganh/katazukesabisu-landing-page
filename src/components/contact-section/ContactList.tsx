@@ -2,11 +2,11 @@ import React from 'react';
 import { ContactListType, PostCommonProps } from '../blog-post/type';
 import { StyledHeading } from '../../styles/Common';
 
-const ContactList = ({ title, content }: PostCommonProps) => {
+const ContactList = ({ title, content, id }: PostCommonProps) => {
   return (
     <React.Fragment>
       {title && (
-        <StyledHeading className="--with-background">
+        <StyledHeading className="--with-background" id={id}>
           <span>{title}</span>
         </StyledHeading>
       )}

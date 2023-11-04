@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Wrapper from './components/layouts/Wapper/Wrapper';
 import { AppRoutes } from './routes';
 import { ApplicationContext } from './ApplicationContext';
 import { createTheme, ThemeProvider } from '@mui/material';
@@ -31,14 +30,12 @@ function App() {
   return (
     <React.Fragment>
       <ApplicationContext.Provider value={{ headerIsOpen, setHeaderIsOpen: handleOpenHeader }}>
-        <Wrapper>
-          <ThemeProvider theme={theme}>
-            <BrowserRouter>
-              <Snackbar />
-              <AppRoutes />
-            </BrowserRouter>
-          </ThemeProvider>
-        </Wrapper>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Snackbar />
+            <AppRoutes />
+          </BrowserRouter>
+        </ThemeProvider>
       </ApplicationContext.Provider>
     </React.Fragment>
   );

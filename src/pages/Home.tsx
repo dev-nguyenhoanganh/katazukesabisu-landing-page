@@ -1,90 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useState } from 'react';
 
 // Component
-import CollapsedBreadcrumbs, { BreadcrumbItem } from '../components/breadcrumb';
 import PostCommon from '../components/blog-post/PostCommon';
 import ImageGallery from '../components/blog-post/ImageGallery';
 import Coupons from '../components/coupons';
-import Loading from './Loading';
-
-// API
-import { GetDataHomepageResponse, HomePageData, getHomePage } from '../api/home/getHomePageData';
-import { HelmetProps } from '../api/util';
-
-// Redux
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { openSnackbar } from '../store/ui';
+import ServicePrice from '../components/service-prices';
+import { FlowCollection } from '../components/flow-section';
 
 // Resource
-import { StyledHeading, StyledRoot } from '../styles/Common';
-import message from '../lang/en.json';
-import * as MOCK_DATA from '../_mock/HomePage';
+import { StyledHeading, StyledRoot, StyledPostCommonContainer } from '../styles/Common';
+import { introduction, serviceIntro, availableArea, serviceGuide, coupons } from '../_mock/HomePage';
 import { contactUs as MOCK_CONTACT } from '../_mock/common-block';
+import { ratePlan } from '../_mock/servicePage';
+import { contactInfo, form } from '../_mock/contactPage';
+import MOCK_DATA from '../_mock/AboutPage';
+import { collection, guide } from '../_mock/FlowPage';
+import { Content } from '../components/blog-post/type';
 
-const breadcrumbs: BreadcrumbItem[] = [{ name: 'ホーム', href: '' }];
+// Img
+import ImgContactUs from '../images/banner3.png';
+import ContactInfo from '../components/contact-section/ContactInfo';
+import FormControl from '../components/contact-section/FormControl';
+import ContactList from '../components/contact-section/ContactList';
+import svg from '../images/line-svg-icon.svg';
+
+const buttonContent: Content[] = [
+  {
+    type: 'button',
+    data: (
+      <a className="line-btn !pl-[10px]" href="https://line.me/ti/p/AQDDUa5nTq" target="_blank" rel="noreferrer">
+        <img className="!h-[32px] !w-[32px]" src={svg} alt="友だち追加" /> 友だち追加
+      </a>
+    ),
+  },
+];
 
 export default function Home(): JSX.Element {
-  const [data, setData] = useState<HomePageData>(MOCK_DATA);
-  const [heading, setHeading] = useState('不用品・粗大ゴミの回収なら片付けサービス');
-  const [seoHelmet, setSeoHelmet] = useState<HelmetProps[]>(MOCK_DATA.seoHelmet);
-  const contactUs = useAppSelector((state) => state.contactUs);
-  const [loading, setLoading] = useState(true);
-  const dispatch = useAppDispatch();
-
-  const getDataHomePage = async () => {
-    try {
-      setLoading(true);
-      const response = await getHomePage();
-      if (response === undefined) {
-        return;
-      }
-      const {
-        data: { heading, homePage },
-        seoHelmet,
-      } = response as GetDataHomepageResponse;
-      setData(homePage);
-      setSeoHelmet(seoHelmet || []);
-      setHeading(heading);
-    } catch (error) {
-      dispatch(openSnackbar({ message: message['error.reloadPage'], severity: 'error' }));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   getDataHomePage();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  // if (loading) {
-  //   return <Loading />;
-  // }
-
   return (
     <React.Fragment>
-      <Helmet>
-        {seoHelmet?.map((item, index) => <meta key={index} property={item.property} content={item.content} />)}
-      </Helmet>
-
       <StyledRoot>
-        <CollapsedBreadcrumbs navigationData={breadcrumbs} />
+        <StyledHeading className="lg:!text-[230%]">不用品・粗大ゴミの回収なら片付けサービス</StyledHeading>
+        <PostCommon {...introduction} />
+        <PostCommon {...serviceIntro} />
+        <ImageGallery {...serviceGuide} />
 
-        <StyledHeading className="lg:!text-[230%]">{heading}</StyledHeading>
+        {/* Service */}
+        <ServicePrice {...ratePlan} style={{ marginTop: '16px' }} />
 
-        {data && (
-          <>
-            <PostCommon {...data.introduction} />
-            <PostCommon {...data.serviceIntro} />
-            {/* <ListService {...data.serviceList} /> */}
-            <ImageGallery {...data.serviceGuide} />
-            <ImageGallery {...data.availableArea} />
-            {/* {contactUs !== undefined && <PostCommon {...contactUs.data} />} */}
-            <PostCommon {...MOCK_CONTACT} />
-            {data.coupons?.isDisplay && <Coupons {...data.coupons} />}
-          </>
+        <ContactInfo {...contactInfo} id="contactInfo" />
+
+        <ContactList {...MOCK_DATA.about} id="office-information" />
+
+        <StyledPostCommonContainer>
+          <StyledHeading className="heading --with-background" id="contact">
+            <span>{MOCK_CONTACT.title}</span>
+          </StyledHeading>
+          <a href="tel:07022134567" className="hover:opacity-80">
+            <img className="cover-image" src={ImgContactUs} alt="お問い合わせはこちら" />
+          </a>
+        </StyledPostCommonContainer>
+
+        <ImageGallery {...availableArea} />
+
+        <FlowCollection content={collection} />
+
+        {guide && (
+          <PostCommon
+            {...guide}
+            content={[...guide.content, ...buttonContent]}
+            imgClassName="[&>img]:!w-[300px] [&>img]:!object-contain"
+          />
         )}
+
+        {coupons.isDisplay && <Coupons {...coupons} />}
+        {/* id="contactForm" */}
+        <FormControl {...form} />
       </StyledRoot>
     </React.Fragment>
   );

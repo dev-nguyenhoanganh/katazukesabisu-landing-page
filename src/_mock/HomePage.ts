@@ -75,9 +75,8 @@ const introduction: PostCommonProps = {
 const serviceIntro: PostCommonProps = {
   title: '追加料金は一切なし！',
   createDate: '',
-  style: 'with-background',
   isDisplay: true,
-  button: [{ innerText: '料金プランはこちら', location: '/service#price' }],
+  button: [{ innerText: '料金プランはこちら', location: '#price' }],
   content: [
     {
       type: 'image',
@@ -135,7 +134,8 @@ const serviceList = {
 const serviceGuide: ImageGalleryProps = {
   title: 'サービス案内',
   style: 'width-background',
-  button: [{ innerText: 'サービス・料金案内はこちら', location: '/service' }],
+  id: 'service',
+  // button: [{ innerText: 'サービス・料金案内はこちら', location: '/service' }],
   content: [
     {
       src: image_hompage_3,

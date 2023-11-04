@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { CollectionContent } from '../../interface/FlowType';
 
 import './style.css';
@@ -24,7 +23,7 @@ export default function FlowCollection({ content }: FlowCollectionProps): JSX.El
               {item.button && (
                 <div className="button-container">
                   {item.button.map((btn, idx) => (
-                    <StyledPrimaryBtn className="--red w-[100%]" to={btn.location} key={idx}>
+                    <StyledPrimaryBtn className="--red w-[100%]" href={btn.location} key={idx}>
                       {btn.innerText}
                     </StyledPrimaryBtn>
                   ))}

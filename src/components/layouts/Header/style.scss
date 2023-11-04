@@ -60,6 +60,7 @@ header li a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  color: #06c,
 }
 
 header li a:hover {
@@ -154,8 +155,7 @@ header .collapse-title {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  header .collapse-title,
-  .navbar.--primary {
+  header .collapse-title {
     display: none;
   }
 }

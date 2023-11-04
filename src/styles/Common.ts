@@ -1,5 +1,4 @@
 import { styled, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 export const StyledRoot = styled(Box)(({ theme }) => ({
   padding: '16px',
@@ -27,6 +26,7 @@ export const StyledHeading = styled('h2')(({ theme }) => ({
   fontFeatureSettings: 'palt',
   letterSpacing: '0.1em',
   textAlign: 'center',
+  scrollMarginBlock: '80px',
 
   '&.--with-background': {
     position: 'relative',
@@ -88,7 +88,7 @@ export const StyledHeading = styled('h2')(({ theme }) => ({
   },
 }));
 
-export const StyledPrimaryBtn = styled(Link)(() => ({
+export const StyledPrimaryBtn = styled('a')(() => ({
   scrollBehavior: 'smooth',
   position: 'relative',
   backgroundColor: '#06c755',
@@ -199,6 +199,78 @@ export const StyledPrimaryLink = styled('a')(() => ({
 
     '&:hover': {
       backgroundColor: '#c62828',
+    },
+  },
+}));
+
+export const StyledPostCommonContainer = styled('div')(({ theme }) => ({
+  '&.post-container.--with-img': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'start',
+    gap: '32px',
+
+    '& img.cover-image': {
+      margin: 'auto',
+      width: '400px',
+      height: '240px',
+      objectFit: 'cover',
+      backgroundPosition: 'center center',
+      borderRadius: '16px',
+    },
+
+    'div:first-of-type': {
+      width: '60%',
+    },
+  },
+
+  '&.post-container.with-background': {
+    position: 'relative',
+
+    '& > div': {
+      zIndex: 1,
+    },
+
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      width: 'calc(100% + 32px)',
+      height: 'calc(100% + 44px)',
+      left: '-16px',
+      top: '-20px',
+      backgroundColor: '#fff7da',
+      zIndex: 0,
+    },
+  },
+
+  [theme.breakpoints.up('lg')]: {
+    '&.post-container.with-background': {
+      '&::before': {
+        width: 'calc(100% + 120px)',
+        left: '-60px',
+      },
+    },
+  },
+
+  [theme.breakpoints.down('md')]: {
+    '&.post-container.--with-img': {
+      display: 'flex',
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+      gap: '16px',
+
+      '& > div': {
+        width: '100%',
+
+        '& img.cover-image': {
+          width: '100%',
+          height: '200px',
+        },
+      },
+
+      'div:first-of-type': {
+        width: '100%',
+      },
     },
   },
 }));

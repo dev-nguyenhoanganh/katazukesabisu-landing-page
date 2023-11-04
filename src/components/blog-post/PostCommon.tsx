@@ -184,7 +184,10 @@ const PostCommon = ({
             {button &&
               button.map((btn, index) => (
                 <React.Fragment key={index}>
-                  <StyledPrimaryBtn className="--red w-[100%] md:w-[300px] mx-auto lg:m-0 !mt-[16px]" to={btn.location}>
+                  <StyledPrimaryBtn
+                    className="--red w-[100%] md:w-[300px] mx-auto lg:m-0 !mt-[16px]"
+                    href={btn.location}
+                  >
                     {btn.innerText}
                   </StyledPrimaryBtn>
                 </React.Fragment>

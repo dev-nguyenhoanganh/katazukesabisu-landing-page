@@ -35,6 +35,14 @@ const StyledImageContainer = styled('div')(({ theme }) => ({
       gap: '8px',
       flexDirection: 'column',
       borderRadius: '16px',
+      overflow: 'hidden',
+
+      '& img': {
+        with: 'calc(100% + 32px)',
+        maxWidth: 'unset',
+        margin: '-16px -16px 0',
+        borderRadius: 'unset',
+      },
     },
   },
 
@@ -119,7 +127,7 @@ const ImageGallery = ({ title, content, id, isLogo = false, style, button }: Ima
         <StyledButtonContainer>
           {button.map((btn, index) => (
             <React.Fragment key={index}>
-              <StyledPrimaryBtn className="--red w-[100%] md:w-fit !mt-0 !px-[36px] flex-grow-0" to={btn.location}>
+              <StyledPrimaryBtn className="--red w-[100%] md:w-fit !mt-0 !px-[36px] flex-grow-0" href={btn.location}>
                 {btn.innerText}
               </StyledPrimaryBtn>
             </React.Fragment>

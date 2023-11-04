@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 import ContactInfo from '../components/contact-section/ContactInfo';
 import FormControl from '../components/contact-section/FormControl';
-import PostCommon from '../components/blog-post/PostCommon';
 import { Content } from '../components/blog-post/type';
 import svg from '../images/line-svg-icon.svg';
 import { DataContactInfo, GetContactInfoResponse, getContactInfo } from '../api/contact/getContactInfo';
 import { Helmet } from 'react-helmet';
 import { HelmetProps } from '../api/util';
-import Loading from './Loading';
 import { useAppDispatch } from '../store/hooks';
 import { openSnackbar } from '../store/ui';
 import message from '../lang/en.json';
@@ -44,41 +42,9 @@ export default function Contact(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const [data, setData] = useState<DataContactInfo>(MOCK_DATA);
-  const [seoHelmet, setSeoHelmet] = useState<HelmetProps[]>(MOCK_DATA.seoHelmet);
-  const [loading, setLoading] = useState(true);
-
-  const getContact = async () => {
-    try {
-      setLoading(true);
-      const response = await getContactInfo();
-      const { data, seoHelmet } = response as GetContactInfoResponse;
-      if (data === undefined) {
-        return;
-      }
-      setData(data);
-      setSeoHelmet(seoHelmet || []);
-    } catch (error) {
-      dispatch(openSnackbar({ message: message['error.reloadPage'], severity: 'error' }));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   getContact();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  // if (loading) {
-  //   return <Loading />;
-  // }
 
   return (
     <React.Fragment>
-      <Helmet>
-        {seoHelmet?.map((item, index) => <meta key={index} property={item.property} content={item.content} />)}
-      </Helmet>
-
       <Box className="p-[16px] lg:px-[60px] lg:w-[1024px] lg:py-[20px] w-[100%] bg-white mx-auto transition-[width] duration-500">
         <CollapsedBreadcrumbs navigationData={breadcrumbs} />
         {data && (

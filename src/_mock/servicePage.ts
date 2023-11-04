@@ -154,8 +154,8 @@ export const servicePriceInfor: ServicePriceInfor = {
 
 export const ratePlan: ServicePriceInfor = {
   heading: '料金プラン',
-  id: '#price',
-  button: [{ innerText: 'カード払いOK!', location: '/flow#f02' }],
+  id: 'price',
+  // button: [{ innerText: 'カード払いOK!', location: '/flow#f02' }],
   section: [
     {
       style: 'list-service-special',

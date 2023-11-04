@@ -27,7 +27,7 @@ export default function ListQA({ content }: Props): JSX.Element {
               {item.button && (
                 <div className="button-container">
                   {item.button.map((btn, idx) => (
-                    <StyledPrimaryBtn className="--red w-[100%] sm:w-[300px] !mt-0" to={btn.location} key={idx}>
+                    <StyledPrimaryBtn className="--red w-[100%] sm:w-[300px] !mt-0" href={btn.location} key={idx}>
                       {btn.innerText}
                     </StyledPrimaryBtn>
                   ))}

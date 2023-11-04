@@ -48,14 +48,14 @@ export const summary: SummaryContent = {
 
 const collection = {
   title: '回収までの流れ',
-  id: 'f01',
+  id: 'flow',
   content: [
     {
       title: '1.お問い合わせ',
       content:
         'まずはお電話（<a class="tel-link" href="tel:07022134567">070-2213-4567</a>）、<a href="https://line.me/ti/p/AQDDUa5nTq" rel="noopener" target="_blank">LINE</a>などにてお問い合わせいただきます。',
       button: [
-        { innerText: 'お問い合わせフォーム', location: '/contact' },
+        { innerText: 'お問い合わせフォーム', location: '#contact' },
         { innerText: 'LINEでのご相談方法', location: '#f03' },
       ],
     },

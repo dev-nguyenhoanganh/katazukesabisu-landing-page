@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -7,11 +7,10 @@ import PostCommon from '../components/blog-post/PostCommon';
 import { Content } from '../components/blog-post/type';
 import CollapsedBreadcrumbs, { BreadcrumbItem } from '../components/breadcrumb';
 import { FlowCollection } from '../components/flow-section';
-import Loading from './Loading';
 
 import { FlowData, GetFlowPageResponse, getFlowPage } from '../api/flow/getFlowPage';
 import { HelmetProps } from '../api/util';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { useAppDispatch } from '../store/hooks';
 import { openSnackbar } from '../store/ui';
 import { StyledHeading, StyledRoot } from '../styles/Common';
 
@@ -37,42 +36,10 @@ const buttonContent: Content[] = [
 ];
 
 export default function FlowPage(): JSX.Element {
-  const dispatch = useAppDispatch();
-
   const [seoHelmet, setSeoHelmet] = useState<HelmetProps[]>(MOCK_DATA.seoHelmet);
   const [data, setData] = useState<FlowData>(MOCK_DATA);
-  // const contactUs = useAppSelector((state) => state.contactUs);
   const [heading, setHeading] = useState('ご利用の流れ');
-  const [loading, setLoading] = useState(true);
-
-  const getFlow = async () => {
-    try {
-      setLoading(true);
-      const response = await getFlowPage();
-      const { data, seoHelmet } = response as GetFlowPageResponse;
-      if (data === undefined) {
-        return;
-      }
-      setData(data);
-      setSeoHelmet(seoHelmet || []);
-      setHeading(data.heading);
-    } catch (error) {
-      dispatch(openSnackbar({ message: message['error.reloadPage'], severity: 'error' }));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   getFlow();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   const { collection, paymentMethod, guide } = data;
-
-  // if (loading) {
-  //   return <Loading />;
-  // }
 
   return (
     <React.Fragment>
